@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import {logEvent} from "../services/logEvents.js";
 
 const CartContext = createContext();
 

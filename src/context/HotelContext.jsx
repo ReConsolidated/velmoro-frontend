@@ -6,12 +6,13 @@ const HotelContext = createContext();
 
 export const HotelProvider = ({ children }) => {
     const [hotel, setHotel] = useState(null);
+    const [urlName, setUrlName] = useState('');
     const [loading, setLoading] = useState(true);
     const [loadedHotelName, setLoadedHotelName] = useState(null);
 
     const loadHotel = useCallback(async (hotelName) => {
         if (hotelName === loadedHotelName) return; // Skip fetching if hotel data is already loaded
-
+        setUrlName(hotelName);
         setLoading(true);
         try {
             const fetchedHotel = await getHotelByName(hotelName);
@@ -25,7 +26,7 @@ export const HotelProvider = ({ children }) => {
     }, [loadedHotelName]);
 
     return (
-        <HotelContext.Provider value={{ hotel, loading, loadHotel }}>
+        <HotelContext.Provider value={{ urlName, hotel, loading, loadHotel }}>
             {children}
         </HotelContext.Provider>
     );

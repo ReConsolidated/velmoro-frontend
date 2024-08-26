@@ -332,7 +332,7 @@ const MenuItemManagement = () => {
                         </label>
                         <button
                             onClick={handleUpdateItem}
-                            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+                            className="bg-fourth text-white px-4 py-2 rounded-md hover:bg-green-600"
                         >
                             Update Item
                         </button>
@@ -375,7 +375,7 @@ const MenuItemManagement = () => {
                                             active: item.active
                                         });
                                     }}
-                                    className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600"
+                                    className="bg-fifth text-white px-4 py-2 rounded-md hover:bg-yellow-600"
                                 >
                                     Update
                                 </button>

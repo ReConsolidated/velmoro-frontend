@@ -4,6 +4,7 @@ import CategoryManagement from '../components/admin/CategoryManagement';
 import ItemManagement from '../components/admin/MenuItemManagement.jsx';
 import OrderManagement from '../components/admin/OrderManagement';
 import HotelManagement from "../components/admin/HotelManagement.jsx";
+import EventApp from "../components/events/EventApp.jsx";
 
 const AdminDashboard = () => {
     useEffect(() => {
@@ -18,6 +19,7 @@ const AdminDashboard = () => {
                     <li><Link to="/admin/categories">Manage Categories</Link></li>
                     <li><Link to="/admin/items">Manage Items</Link></li>
                     <li><Link to="/admin/orders">Manage Orders</Link></li>
+                    <li><Link to="/admin/events">See Events</Link></li>
                 </ul>
             </nav>
             <Routes>
@@ -25,6 +27,7 @@ const AdminDashboard = () => {
                 <Route path="items" element={<ItemManagement/>}/>
                 <Route path="orders" element={<OrderManagement/>}/>
                 <Route path="hotels" element={<HotelManagement/>}/>
+                <Route path="events" element={<EventApp/>}/>
             </Routes>
         </div>
     );

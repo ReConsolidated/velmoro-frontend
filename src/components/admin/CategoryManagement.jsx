@@ -9,14 +9,18 @@ const CategoryManagement = () => {
         name: '',
         nameEN: '',
         nameDE: '',
-        hotel: null // Przechowuje obiekt hotelu
+        svgUrl: '',
+        hotel: null, // Przechowuje obiekt hotelu
+        priority: 0 // Nowe pole
     });
     const [updateCategoryId, setUpdateCategoryId] = useState(null);
     const [updateCategoryDetails, setUpdateCategoryDetails] = useState({
         name: '',
         nameEN: '',
         nameDE: '',
-        hotel: null // Przechowuje obiekt hotelu
+        svgUrl: '',
+        hotel: null, // Przechowuje obiekt hotelu
+        priority: 0 // Nowe pole
     });
 
     useEffect(() => {
@@ -41,7 +45,9 @@ const CategoryManagement = () => {
             name: '',
             nameEN: '',
             nameDE: '',
-            hotel: null // Reset obiektu hotelu
+            svgUrl: '',
+            hotel: null, // Reset obiektu hotelu
+            priority: 0 // Reset wartości priority
         });
         const data = await getAllCategories();
         setCategories(data);
@@ -55,7 +61,9 @@ const CategoryManagement = () => {
                 name: '',
                 nameEN: '',
                 nameDE: '',
-                hotel: null // Reset obiektu hotelu
+                svgUrl: '',
+                hotel: null, // Reset obiektu hotelu
+                priority: 0 // Reset wartości priority
             });
             const data = await getAllCategories();
             setCategories(data);
@@ -79,29 +87,43 @@ const CategoryManagement = () => {
                     <input
                         type="text"
                         value={newCategory.name}
-                        onChange={(e) => setNewCategory({ ...newCategory, name: e.target.value })}
+                        onChange={(e) => setNewCategory({...newCategory, name: e.target.value})}
                         placeholder="Category Name (Default)"
                         className="w-full p-2 border border-gray-300 rounded-md"
                     />
                     <input
                         type="text"
                         value={newCategory.nameEN}
-                        onChange={(e) => setNewCategory({ ...newCategory, nameEN: e.target.value })}
+                        onChange={(e) => setNewCategory({...newCategory, nameEN: e.target.value})}
                         placeholder="Category Name (EN)"
                         className="w-full p-2 border border-gray-300 rounded-md"
                     />
                     <input
                         type="text"
                         value={newCategory.nameDE}
-                        onChange={(e) => setNewCategory({ ...newCategory, nameDE: e.target.value })}
+                        onChange={(e) => setNewCategory({...newCategory, nameDE: e.target.value})}
                         placeholder="Category Name (DE)"
+                        className="w-full p-2 border border-gray-300 rounded-md"
+                    />
+                    <input
+                        type="text"
+                        value={newCategory.svgUrl}
+                        onChange={(e) => setNewCategory({...newCategory, svgUrl: e.target.value})}
+                        placeholder="SVG Url"
+                        className="w-full p-2 border border-gray-300 rounded-md"
+                    />
+                    <input
+                        type="number"
+                        value={newCategory.priority}
+                        onChange={(e) => setNewCategory({...newCategory, priority: parseInt(e.target.value, 10) || 0})}
+                        placeholder="Priority"
                         className="w-full p-2 border border-gray-300 rounded-md"
                     />
                     <select
                         value={newCategory.hotel ? newCategory.hotel.id : ''}
                         onChange={(e) => {
                             const selectedHotel = hotels.find(hotel => hotel.id === parseInt(e.target.value, 10));
-                            setNewCategory({ ...newCategory, hotel: selectedHotel });
+                            setNewCategory({...newCategory, hotel: selectedHotel});
                         }}
                         className="w-full p-2 border border-gray-300 rounded-md"
                     >
@@ -129,29 +151,55 @@ const CategoryManagement = () => {
                         <input
                             type="text"
                             value={updateCategoryDetails.name}
-                            onChange={(e) => setUpdateCategoryDetails({ ...updateCategoryDetails, name: e.target.value })}
+                            onChange={(e) => setUpdateCategoryDetails({...updateCategoryDetails, name: e.target.value})}
                             placeholder="Update Category Name (Default)"
                             className="w-full p-2 border border-gray-300 rounded-md"
                         />
                         <input
                             type="text"
                             value={updateCategoryDetails.nameEN}
-                            onChange={(e) => setUpdateCategoryDetails({ ...updateCategoryDetails, nameEN: e.target.value })}
+                            onChange={(e) => setUpdateCategoryDetails({
+                                ...updateCategoryDetails,
+                                nameEN: e.target.value
+                            })}
                             placeholder="Update Category Name (EN)"
                             className="w-full p-2 border border-gray-300 rounded-md"
                         />
                         <input
                             type="text"
                             value={updateCategoryDetails.nameDE}
-                            onChange={(e) => setUpdateCategoryDetails({ ...updateCategoryDetails, nameDE: e.target.value })}
+                            onChange={(e) => setUpdateCategoryDetails({
+                                ...updateCategoryDetails,
+                                nameDE: e.target.value
+                            })}
                             placeholder="Update Category Name (DE)"
+                            className="w-full p-2 border border-gray-300 rounded-md"
+                        />
+                        <input
+                            type="text"
+                            value={updateCategoryDetails.svgUrl}
+                            onChange={(e) => setUpdateCategoryDetails({
+                                ...updateCategoryDetails,
+                                svgUrl: e.target.value
+                            })}
+                            placeholder="Update SVG Url"
+                            className="w-full p-2 border border-gray-300 rounded-md"
+                        />
+                        <input
+                            type="number"
+                            value={updateCategoryDetails.priority}
+                            onChange={(e) => setUpdateCategoryDetails({
+                                ...updateCategoryDetails,
+                                priority: parseInt(e.target.value, 10) || 0
+                            })}
+                            placeholder="Update Priority"
                             className="w-full p-2 border border-gray-300 rounded-md"
                         />
                         <select
                             value={updateCategoryDetails.hotel ? updateCategoryDetails.hotel.id : ''}
                             onChange={(e) => {
                                 const selectedHotel = hotels.find(hotel => hotel.id === parseInt(e.target.value, 10));
-                                setUpdateCategoryDetails({ ...updateCategoryDetails, hotel: selectedHotel });
+                                setUpdateCategoryDetails({...updateCategoryDetails, hotel: selectedHotel});
                             }}
                             className="w-full p-2 border border-gray-300 rounded-md"
                         >
@@ -164,7 +212,7 @@ const CategoryManagement = () => {
                         </select>
                         <button
                             onClick={handleUpdateCategory}
-                            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+                            className="bg-fourth text-white px-4 py-2 rounded-md hover:bg-green-600"
                         >
                             Update Category
                         </button>
@@ -177,12 +225,14 @@ const CategoryManagement = () => {
                 <h3 className="text-xl font-semibold mb-4">Categories</h3>
                 <ul className="space-y-4">
                     {categories.map(category => (
-                        <li key={category.id} className="p-4 border border-gray-200 rounded-md flex justify-between items-center">
+                        <li key={category.id}
+                            className="p-4 border border-gray-200 rounded-md flex justify-between items-center">
                             <div>
                                 <h4 className="text-lg font-semibold">{category.name}</h4>
                                 <p className="text-sm text-gray-500">Name (EN): {category.nameEN}</p>
                                 <p className="text-sm text-gray-500">Name (DE): {category.nameDE}</p>
                                 <p className="text-sm text-gray-500">Hotel: {hotels.find(hotel => hotel.id === category.hotel?.id)?.displayName || 'N/A'}</p>
+                                <p className="text-sm text-gray-500">Priority: {category.priority}</p>
                             </div>
                             <div className="flex space-x-4">
                                 <button
@@ -192,10 +242,12 @@ const CategoryManagement = () => {
                                             name: category.name,
                                             nameEN: category.nameEN,
                                             nameDE: category.nameDE,
-                                            hotel: category.hotel
+                                            svgUrl: category.svgUrl,
+                                            hotel: category.hotel,
+                                            priority: category.priority // Dodajemy priorytet do detali aktualizacji
                                         });
                                     }}
-                                    className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600"
+                                    className="bg-fifth text-white px-4 py-2 rounded-md hover:bg-yellow-600"
                                 >
                                     Update
                                 </button>

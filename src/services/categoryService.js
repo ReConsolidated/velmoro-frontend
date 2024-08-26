@@ -5,7 +5,20 @@ const BASE_URL = '/categories'; // URL do Twojego backendu
 // Funkcja do pobierania wszystkich kategorii
 export const getAllCategories = async () => {
     try {
-        const response = await instance.get(BASE_URL);
+        const response = await instance.get(BASE_URL, {
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching categories:", error);
+        throw error;
+    }
+};
+
+export const getHotelCategories = async (hotelUrlName) => {
+    try {
+        const response = await instance.get(BASE_URL, {
+            params: { urlName: hotelUrlName }
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching categories:", error);

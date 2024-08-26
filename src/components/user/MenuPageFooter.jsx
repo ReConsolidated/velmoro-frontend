@@ -29,7 +29,7 @@ const MenuPageFooter = () => {
 
     return (
         <div className="">
-            <nav className="bg-gray-800 text-white fixed inset-x-0 bottom-0 z-10 pt-1">
+            <nav className="block bg-secondary text-white fixed inset-x-0 bottom-0 pt-1">
                 <ul className="flex justify-around items-center py-4">
                     <li className="flex-1 h-full">
                         <Link
@@ -49,15 +49,6 @@ const MenuPageFooter = () => {
                             <span className="mt-1 text-sm">{t('cart')}</span>
                         </Link>
                     </li>
-                    <li className="flex-1 h-full">
-                        <button
-                            onClick={toggleLanguageMenu}
-                            className="flex flex-col items-center justify-center h-full w-full"
-                        >
-                            <FaGlobe size={24}/>
-                            <span className="mt-1 text-sm">{t('language')}</span>
-                        </button>
-                    </li>
                 </ul>
             </nav>
             <div className="bg-transparent text-transparent inset-x-0 bottom-0 z-9 pt-1 h-16">
@@ -69,7 +60,7 @@ const MenuPageFooter = () => {
                     <div className="fixed inset-0 flex items-center justify-center z-30">
                         <div className="bg-white rounded-lg p-6 w-80 max-w-xs shadow-lg relative">
                             <button onClick={closeLanguageMenu}
-                                    className="absolute top-2 right-2 text-gray-700 hover:text-gray-900">
+                                    className="absolute top-2 right-2 color-secondary hover:text-gray-900">
                                 <FiX size={20}/>
                             </button>
                             <ul>

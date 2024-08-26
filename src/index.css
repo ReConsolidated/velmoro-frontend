@@ -2,9 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.color-primary {
+  color: #000000;
+}
+
+.color-secondary {
+  color: #06327d;
+}
+
+.color-third {
+  color: #2b70e4;
+}
+
+.color-fourth {
+  color: #209d5c;
+}
+
+.color-fifth {
+  color: #ffd034;
+}
+
+.color-sixth {
+  color: #ffffff;
+}
+
+.bg-primary {
+  background-color: #000000;
+}
+
+.bg-secondary {
+  background-color: #06327d;
+}
+
+.bg-third {
+  background-color: #2b70e4;
+}
+
+.bg-fourth {
+  background-color: #209d5c;
+}
+
+.bg-fifth {
+  background-color: #ffd034;
+}
+
+.bg-sixth {
+  background-color: #ffffff;
+}
+
+.logo-font {
+  font-family: Lato;
+}
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

@@ -13,6 +13,7 @@ import UserDashboard from "./pages/UserDashboard.jsx";
 import Spinner from "./components/Spinner.jsx";
 import './i18n';
 import i18n from "./i18n.js";
+import EventApp from "./components/events/EventApp.jsx";
 
 const updateHtmlLang = (lng) => {
     document.documentElement.lang = lng;

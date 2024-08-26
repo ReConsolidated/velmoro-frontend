@@ -33,17 +33,10 @@ const OrderConfirmationPage = () => {
                             {order.orderEntries.map((entry, index) => (
                                 <div key={index} className="flex items-start border-b pb-4">
                                     {/* Image Section */}
-                                    <div className="w-20 h-20 flex-shrink-0 mr-4">
-                                        <img
-                                            src={entry.item.imageUrl || '/default-image.png'} // Placeholder if no image
-                                            alt={`Item ${entry.item.displayName}`}
-                                            className="w-full h-full object-cover rounded-md"
-                                        />
-                                    </div>
                                     {/* Item Details */}
                                     <div className="flex-1">
                                         <h3 className="text-lg font-semibold mb-1">{entry.item.displayName}</h3>
-                                        <p className="text-base text-gray-700 mb-1">
+                                        <p className="text-base color-secondary mb-1">
                                             {entry.totalPrice.toLocaleString('pl-PL', {
                                                 style: 'currency',
                                                 currency: 'PLN'
@@ -53,6 +46,20 @@ const OrderConfirmationPage = () => {
                                             {t('quantity')}: {entry.quantity}
                                         </p>
                                     </div>
+                                    {
+                                        entry.item.imageUrl ? (
+                                            <div className="w-20 h-20 flex-shrink-0 mr-4">
+                                                <img
+                                                    src={entry.item.imageUrl || '/default-image.png'} // Placeholder if no image
+                                                    alt={`Item ${entry.item.displayName}`}
+                                                    className="w-full h-full object-cover rounded-md"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div>
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             ))}
                         </div>
@@ -60,10 +67,10 @@ const OrderConfirmationPage = () => {
                 )}
                 <p className="text-lg text-gray-600 mt-6 text-center">{t('orderCompletionTime')}</p>
             </div>
-            <div className="flex bg-green-500 text-white fixed inset-x-0 bottom-0 z-10">
+            <div className="flex bg-fourth text-white fixed inset-x-0 bottom-0 z-10">
                 <button
                     onClick={() => navigate(`/` + hotel.urlName + '/menu')}
-                    className="w-full border-t border-r border-gray-300 bg-gray-800 text-white text-lg p-4 font-bold hover:bg-gray-900"
+                    className="w-full border-t border-r border-gray-300 bg-secondary text-white text-lg p-4 py-12 font-bold hover:bg-gray-900"
                 >
                     {t('backToMenu')}
                 </button>

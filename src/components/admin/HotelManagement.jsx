@@ -160,7 +160,7 @@ const HotelManagement = () => {
                     <Button onClick={handleSubmit} className="bg-blue-500 text-white hover:bg-blue-600 p-2 text-xl">
                         {selectedHotel ? 'Update Hotel' : 'Add Hotel'}
                     </Button>
-                    <Button onClick={handleCloseModal} className="bg-gray-500 text-white hover:bg-gray-600 p-2 text-xl">
+                    <Button onClick={handleCloseModal} className="bg-third text-white hover:bg-gray-600 p-2 text-xl">
                         Cancel
                     </Button>
                 </Modal.Footer>

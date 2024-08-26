@@ -35,3 +35,15 @@ export const getAllMenuItems = async () => {
         throw error;
     }
 };
+
+export const getHotelMenuItems = async (hotelUrlName) => {
+    try {
+        const response = await instance.get(API_URL, {
+            params: { urlName: hotelUrlName }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching menu items:', error);
+        throw error;
+    }
+};
